@@ -190,7 +190,7 @@ tbody tr:hover{background:rgba(255,255,255,.02)}
 .modal-head p{margin:4px 0 0;color:var(--muted);font-size:12.5px}
 .modal-head .x{border:0;background:var(--surface);width:32px;height:32px;border-radius:9px;color:var(--muted);flex:none}
 .modal-head .x:hover{color:var(--ink)}
-.modal-body{padding:18px 22px;overflow:auto}
+.modal-body{padding:20px 22px;overflow:auto}
 .modal-foot{display:flex;justify-content:flex-end;gap:10px;padding:16px 22px;border-top:1px solid var(--line-soft)}
 
 .formgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 14px}
@@ -203,7 +203,7 @@ tbody tr:hover{background:rgba(255,255,255,.02)}
 }
 .pillgroup input{accent-color:var(--cyan)}
 .pillgroup input:checked + span{color:var(--ink)}
-textarea{resize:vertical;min-height:64px;line-height:1.45}
+textarea{resize:vertical;min-height:78px;line-height:1.5}
 .hint{font-size:11.5px;color:var(--muted-dim);font-weight:500}
 .switchrow{display:flex;gap:18px;margin-top:4px}
 .switchrow label{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink);font-weight:600}
@@ -219,14 +219,10 @@ textarea{resize:vertical;min-height:64px;line-height:1.45}
 .toast .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);flex:none}
 
 
-.message-modal .modal{max-width:480px;width:calc(100% - 40px);margin:18vh auto;overflow:hidden}
-.msg-icon{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-weight:900;color:#fff;margin-bottom:12px;box-shadow:0 12px 32px rgba(0,0,0,.24)}
-.msg-icon.success{background:linear-gradient(135deg,#059669,#10b981)}
-.msg-icon.warning{background:linear-gradient(135deg,#d97706,#f59e0b)}
-.msg-icon.error{background:linear-gradient(135deg,#dc2626,#ef4444)}
-.msg-icon.info{background:linear-gradient(135deg,#2563eb,#06b6d4)}
-.invalid{border-color:#ef4444!important;box-shadow:0 0 0 3px rgba(239,68,68,.16)!important}
-@media(max-width:900px){.modal{max-width:calc(100vw - 24px);width:calc(100% - 24px);margin:12px auto;max-height:calc(100vh - 24px)}.formgrid{grid-template-columns:1fr}}
+/* restored processing lock + progress bar */
+.process-lock{position:fixed;inset:0;display:none;place-items:center;z-index:95;background:rgba(4,7,13,.72);backdrop-filter:blur(7px);cursor:progress}.process-lock.show{display:grid}.process-card{width:min(460px,calc(100% - 42px));background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}.process-top{display:flex;align-items:center;gap:13px;margin-bottom:16px}.spinner{width:36px;height:36px;border-radius:50%;border:3px solid rgba(45,212,191,.16);border-top-color:var(--cyan);animation:spin .8s linear infinite}.process-title{font-weight:800;font-size:17px}.process-sub{color:var(--muted);font-size:13px;margin-top:3px}.progress{height:9px;background:var(--surface-2);border-radius:999px;overflow:hidden}.progress-bar{height:100%;width:8%;border-radius:999px;background:linear-gradient(90deg,var(--cyan),#60a5fa);transition:width .25s ease}@keyframes spin{to{transform:rotate(360deg)}}
+/* modern message modal */
+.message-modal .modal{max-width:480px;width:calc(100% - 40px);margin:18vh auto;overflow:hidden}.msg-icon{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-weight:900;color:#fff;margin-bottom:12px}.msg-icon.success{background:linear-gradient(135deg,#059669,#10b981)}.msg-icon.warning{background:linear-gradient(135deg,#d97706,#f59e0b)}.msg-icon.error{background:linear-gradient(135deg,#dc2626,#ef4444)}.msg-icon.info{background:linear-gradient(135deg,#2563eb,#06b6d4)}.invalid{border-color:#ef4444!important;box-shadow:0 0 0 3px rgba(239,68,68,.18)!important}.desc{min-width:520px!important;max-width:760px!important}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
@@ -320,7 +316,6 @@ textarea{resize:vertical;min-height:64px;line-height:1.45}
 
       <div class="tablewrap">
         <table>
-          <colgroup><col style="width:15%"><col style="width:38%"><col style="width:11%"><col style="width:10%"><col style="width:11%"><col style="width:9%"><col style="width:6%"></colgroup>
           <thead>
             <tr><th>Ticket</th><th>Description</th><th>Status</th><th>EndPoint</th><th>Owner</th><th>Date</th><th></th></tr>
           </thead>
@@ -401,6 +396,7 @@ textarea{resize:vertical;min-height:64px;line-height:1.45}
 </div>
 
 <div id="toast" class="toast"><span class="dot"></span><span id="toastText"></span></div>
+<div id="processLock" class="process-lock"><div class="process-card"><div class="process-top"><div class="spinner"></div><div><div id="processTitle" class="process-title">Processing…</div><div id="processSub" class="process-sub">กำลังประมวลผล</div></div></div><div class="progress"><div id="processBar" class="progress-bar"></div></div></div></div>
 <div id="messageOverlay" class="overlay message-modal"><div class="shade"></div><div class="modal small"><div class="modal-head"><div><div id="msgIcon" class="msg-icon info">i</div><div class="eyebrow" id="msgEyebrow">MESSAGE</div><h2 id="msgTitle">แจ้งเตือน</h2><p id="msgText">ข้อความ</p></div></div><div class="modal-foot"><button type="button" class="btn ghost" id="msgCancel" style="display:none">Cancel</button><button type="button" class="btn primary" id="msgOk">OK</button></div></div></div>
 
 <script>
@@ -462,27 +458,30 @@ function statusColor(s) {
   return `hsl(${h % 360} 70% 62%)`;
 }
 
-function toastMsg(x, type='info') {
+function toastMsg(x, type = 'info') {
   toastText.textContent = x;
   toast.className = 'toast show ' + type;
   clearTimeout(toastMsg._t);
-  toastMsg._t = setTimeout(() => toast.classList.remove('show'), type === 'error' ? 4200 : 2600);
+  toastMsg._t = setTimeout(() => toast.classList.remove('show'), type === 'error' ? 4300 : 2700);
 }
+let _progressTimer;
+function startProcess(title='Processing…', sub='กำลังประมวลผล') {
+  processTitle.textContent = title; processSub.textContent = sub; processBar.style.width = '8%';
+  processLock.classList.add('show'); let pct = 8; clearInterval(_progressTimer);
+  _progressTimer = setInterval(()=>{ pct = Math.min(92, pct + Math.random()*15); processBar.style.width = pct + '%'; }, 300);
+}
+function stepProcess(sub, pct){ processSub.textContent = sub; if(pct) processBar.style.width = pct + '%'; }
+function endProcess(){ clearInterval(_progressTimer); processBar.style.width='100%'; setTimeout(()=>processLock.classList.remove('show'),180); }
 function messageModal({title='แจ้งเตือน', message='', type='info', confirm=false, okText='OK', cancelText='Cancel'} = {}) {
   msgTitle.textContent = title; msgText.textContent = message; msgEyebrow.textContent = type.toUpperCase();
   msgIcon.className = 'msg-icon ' + type; msgIcon.textContent = type === 'success' ? '✓' : type === 'warning' ? '!' : type === 'error' ? '×' : 'i';
   msgOk.textContent = okText; msgCancel.textContent = cancelText; msgCancel.style.display = confirm ? '' : 'none';
   messageOverlay.classList.add('open');
-  return new Promise(resolve => {
-    const close = v => { messageOverlay.classList.remove('open'); msgOk.onclick = msgCancel.onclick = null; resolve(v); };
-    msgOk.onclick = () => close(true); msgCancel.onclick = () => close(false);
-  });
+  return new Promise(resolve => { const close = v => { messageOverlay.classList.remove('open'); resolve(v); }; msgOk.onclick = () => close(true); msgCancel.onclick = () => close(false); });
 }
-const showInfo = (m,t='แจ้งเตือน') => messageModal({title:t,message:m,type:'info'});
-const showWarning = (m,t='ตรวจสอบข้อมูล') => messageModal({title:t,message:m,type:'warning'});
-const showError = (m,t='เกิดข้อผิดพลาด') => messageModal({title:t,message:m,type:'error'});
-const showSuccess = (m,t='สำเร็จ') => messageModal({title:t,message:m,type:'success'});
-const askConfirm = (m,t='ยืนยันรายการ') => messageModal({title:t,message:m,type:'warning',confirm:true,okText:'Confirm'});
+const showWarning=(m,t='ตรวจสอบข้อมูล')=>messageModal({title:t,message:m,type:'warning'});
+const showError=(m,t='เกิดข้อผิดพลาด')=>messageModal({title:t,message:m,type:'error'});
+const askConfirm=(m,t='ยืนยันรายการ')=>messageModal({title:t,message:m,type:'warning',confirm:true,okText:'Confirm'});
 
 /* live Thailand clock — the one continuously-moving element on
    the page, deliberately quiet (monospace, no animation) */
@@ -665,9 +664,9 @@ function toggleTicket() {
     if (vals('TicketType').includes(inTicket.value) && inTicket.value !== 'Ticket') inTicket.value = '';
   } else {
     inTicket.required = false;
+    inTicket.classList.remove('invalid');
     inTicket.value = t;
     inTicket.disabled = true;
-    inTicket.classList.remove('invalid');
   }
 }
 function toggleEndPoint() {
@@ -683,16 +682,13 @@ async function saveRecord(e) {
   const rec = Object.fromEntries(new FormData(form).entries());
   const tt = document.querySelector('[name=TicketType]:checked')?.value || 'Ticket';
   rec.TicketType = tt;
-  if (tt === 'Ticket' && !String(rec.Ticket || '').trim()) {
-    inTicket.classList.add('invalid');
-    inTicket.focus();
-    await showWarning('กรุณากรอก Ticket ID ก่อนบันทึก เมื่อเลือก Source = Ticket', 'Ticket ID is required');
-    return;
-  }
+  if (tt === 'Ticket' && !String(rec.Ticket || '').trim()) { inTicket.classList.add('invalid'); inTicket.focus(); await showWarning('กรุณากรอก Ticket ID ก่อนบันทึก เมื่อเลือก Source = Ticket', 'Ticket ID is required'); return; }
   if (tt !== 'Ticket') rec.Ticket = tt;
   const saveBtn = document.querySelector('#ticketOverlay button[type=submit]');
   saveBtn.disabled = true;
+  startProcess(current ? 'Updating ticket…' : 'Adding ticket…', 'เตรียมข้อมูลสำหรับบันทึก');
   try {
+    stepProcess('กำลังส่งข้อมูลไป Google Sheet', 35);
     if (current) {
       const saved = await apiCall('updateWorkLog', { row: current._row, record: rec });
       const i = rows.findIndex(r => r._row === current._row);
@@ -701,25 +697,31 @@ async function saveRecord(e) {
       const saved = await apiCall('createWorkLog', { record: rec }); // saved._row comes from the backend
       rows.push(saved);
     }
+    stepProcess('อัพเดทข้อมูลบนหน้าจอ', 75);
     closeTicketModal();
     applyFilters();
     renderDashboard();
     toastMsg('บันทึกเรียบร้อย','success');
+    stepProcess('ซิงก์ข้อมูลล่าสุด', 92);
     backgroundResync(); // reconcile with the sheet quietly, without blocking the UI
-  } catch (err) { toastMsg(err.message, 'error'); await showError(err.message); }
-  finally { saveBtn.disabled = false; }
+  } catch (err) { toastMsg(err.message,'error'); }
+  finally { endProcess(); saveBtn.disabled = false; }
 }
 async function removeRecord(row) {
   if (!(await askConfirm('ลบรายการนี้ออกจาก WorkLog หรือไม่?', 'Delete ticket'))) return;
+  startProcess('Deleting ticket…', 'กำลังลบข้อมูลจาก Google Sheet');
   try {
+    stepProcess('ส่งคำสั่งลบข้อมูล', 35);
     await apiCall('deleteWorkLog', { row });
+    stepProcess('อัพเดทตารางบนหน้าจอ', 72);
     rows = rows.filter(r => r._row !== row);
     rows.forEach(r => { if (r._row > row) r._row--; }); // sheet rows below the deleted one shift up
     applyFilters();
     renderDashboard();
     toastMsg('ลบเรียบร้อย','success');
     backgroundResync();
-  } catch (err) { toastMsg(err.message, 'error'); await showError(err.message); }
+  } catch (err) { toastMsg(err.message,'error'); await showError(err.message); }
+  finally { endProcess(); }
 }
 
 /* ============================================================
@@ -765,7 +767,7 @@ async function quickResp(row, Value, isActive, OnDuty) {
     renderConfig();
     renderDashboard();
     backgroundResync();
-  } catch (err) { toastMsg(err.message, 'error'); await showError(err.message); }
+  } catch (err) { toastMsg(err.message,'error'); }
 }
 
 function openConfigModal(o) {
@@ -793,7 +795,9 @@ async function saveConfig(e) {
     : { Value: fd.Value };
   const saveBtn = document.querySelector('#cfgOverlay button[type=submit]');
   saveBtn.disabled = true;
+  startProcess(current ? 'Updating ticket…' : 'Adding ticket…', 'เตรียมข้อมูลสำหรับบันทึก');
   try {
+    stepProcess('กำลังส่งข้อมูลไป Google Sheet', 35);
     meta[cfgSheet] = meta[cfgSheet] || [];
     if (cfgCurrent) {
       await apiCall('updateConfig', { sheet: cfgSheet, row: cfgCurrent._row, record });
@@ -810,12 +814,14 @@ async function saveConfig(e) {
     renderDashboard();
     toastMsg('บันทึกเรียบร้อย','success');
     backgroundResync(); // confirms the real row number assigned by the sheet
-  } catch (err) { toastMsg(err.message, 'error'); await showError(err.message); }
-  finally { saveBtn.disabled = false; }
+  } catch (err) { toastMsg(err.message,'error'); }
+  finally { endProcess(); saveBtn.disabled = false; }
 }
 async function deleteConfig(row) {
   if (!(await askConfirm('ลบรายการนี้ออกจาก WorkLog หรือไม่?', 'Delete ticket'))) return;
+  startProcess('Deleting ticket…', 'กำลังลบข้อมูลจาก Google Sheet');
   try {
+    stepProcess('ส่งคำสั่งลบข้อมูล', 35);
     await apiCall('deleteConfig', { sheet: cfgSheet, row });
     meta[cfgSheet] = (meta[cfgSheet] || []).filter(x => x._row !== row);
     meta[cfgSheet].forEach(x => { if (x._row > row) x._row--; });
@@ -824,7 +830,7 @@ async function deleteConfig(row) {
     renderDashboard();
     toastMsg('ลบเรียบร้อย','success');
     backgroundResync();
-  } catch (err) { toastMsg(err.message, 'error'); await showError(err.message); }
+  } catch (err) { toastMsg(err.message,'error'); }
 }
 
 /* ============================================================

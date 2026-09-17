@@ -1,4 +1,747 @@
-<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TSMC WorkLog Modern</title><style>
-:root{--bg:#f4f7fb;--panel:rgba(255,255,255,.82);--card:#fff;--ink:#111827;--muted:#64748b;--line:#e2e8f0;--blue:#2563eb;--cyan:#06b6d4;--green:#10b981;--orange:#f59e0b;--red:#ef4444;--violet:#8b5cf6;--shadow:0 18px 50px rgba(15,23,42,.10);--r:22px}*{box-sizing:border-box}body{margin:0;color:var(--ink);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at top left,#dbeafe 0,transparent 34%),radial-gradient(circle at top right,#cffafe 0,transparent 26%),var(--bg);min-height:100vh}.app{display:grid;grid-template-columns:292px 1fr;min-height:100vh}.side{position:sticky;top:0;height:100vh;padding:22px;background:rgba(255,255,255,.72);backdrop-filter:blur(20px);border-right:1px solid rgba(226,232,240,.85)}.brand{display:flex;gap:12px;align-items:center;margin-bottom:24px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:white;font-weight:900;box-shadow:0 12px 24px rgba(37,99,235,.28)}.brand h1{margin:0;font-size:20px;letter-spacing:-.03em}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.nav{display:grid;gap:8px}.nav button{height:48px;border:0;border-radius:16px;background:transparent;color:#475569;font-weight:800;display:flex;align-items:center;gap:10px;padding:0 14px;cursor:pointer;transition:.18s}.nav button:hover{background:#f1f5f9;transform:translateX(2px)}.nav button.active{background:linear-gradient(135deg,#eff6ff,#ecfeff);color:var(--blue);box-shadow:inset 0 0 0 1px #dbeafe}.main{padding:28px;max-width:1540px;width:100%;margin:0 auto}.hero{border:1px solid rgba(226,232,240,.8);border-radius:28px;padding:24px;background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.64));box-shadow:var(--shadow);backdrop-filter:blur(16px);margin-bottom:18px}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:6px 10px;font-weight:900;font-size:12px}.title h2{font-size:34px;line-height:1.05;letter-spacing:-.05em;margin:12px 0 8px}.title p{margin:0;color:var(--muted)}.actions{display:flex;gap:10px}.btn{height:44px;border:1px solid var(--line);background:rgba(255,255,255,.9);border-radius:14px;padding:0 16px;font-weight:900;cursor:pointer;transition:.16s;white-space:nowrap}.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(15,23,42,.08)}.primary{background:linear-gradient(135deg,var(--blue),#3b82f6)!important;color:white;border:0!important}.ghost{background:#f8fafc}.danger{color:var(--red)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}.card{position:relative;overflow:hidden;background:white;border:1px solid var(--line);border-radius:22px;padding:18px;min-height:118px}.card:before{content:"";position:absolute;inset:auto -30px -45px auto;width:115px;height:115px;border-radius:50%;background:var(--tone,#dbeafe);opacity:.75}.metric{font-size:32px;font-weight:950;letter-spacing:-.05em}.label{color:var(--muted);font-weight:750}.mini{margin-top:10px;height:6px;background:#f1f5f9;border-radius:99px;overflow:hidden}.bar{height:100%;width:20%;border-radius:99px;background:var(--accent,var(--blue));transition:.5s}.toolbar{display:grid;grid-template-columns:minmax(260px,1fr) 160px 180px 155px auto;gap:12px;margin:18px 0}.control{position:relative}.control span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#94a3b8}.input,select,textarea{width:100%;border:1px solid var(--line);background:rgba(255,255,255,.9);border-radius:16px;padding:12px 14px;min-height:46px;font:inherit;outline:none;transition:.16s}.control .input{padding-left:40px}.input:focus,select:focus,textarea:focus{border-color:#93c5fd;box-shadow:0 0 0 4px #dbeafe}.tablewrap{background:white;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #edf2f7;padding:14px 14px;text-align:left;vertical-align:top}th{background:#f8fafc;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:.04em}.ticket{font-weight:950;color:#1d4ed8}.desc{max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pill{display:inline-flex;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:950}.Inprocess{background:#fef3c7;color:#92400e}.Report{background:#dbeafe;color:#1e40af}.Relocate{background:#ffedd5;color:#9a3412}.Done{background:#dcfce7;color:#166534}.rowbtn{border:0;background:transparent;font-weight:950;cursor:pointer;padding:7px;color:var(--blue)}.pager{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#fbfdff}.drawer{position:fixed;inset:0;display:none;z-index:30}.drawer.open{display:block}.shade{position:absolute;inset:0;background:rgba(15,23,42,.35);backdrop-filter:blur(3px)}.panel{position:absolute;right:18px;top:18px;bottom:18px;width:min(820px,calc(100% - 36px));background:white;border:1px solid var(--line);border-radius:28px;padding:24px;overflow:auto;box-shadow:0 30px 80px rgba(15,23,42,.25);animation:slide .2s ease}@keyframes slide{from{transform:translateX(24px);opacity:0}}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}.field label{display:block;font-weight:900;margin-bottom:7px}.radio,.checks{display:flex;gap:10px;flex-wrap:wrap}.radio label,.checks label{display:flex;gap:8px;align-items:center;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-weight:800}.toast{position:fixed;right:22px;bottom:22px;background:#0f172a;color:white;border-radius:16px;padding:13px 16px;display:none;z-index:50;box-shadow:var(--shadow)}.toast.show{display:block;animation:pop .2s ease}@keyframes pop{from{transform:translateY(10px);opacity:0}}.fab{display:none}.cfgNote{padding:12px 14px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:16px;color:#64748b;margin-bottom:14px}@media(max-width:1050px){.app{grid-template-columns:1fr}.side{position:static;height:auto}.nav{grid-template-columns:repeat(5,1fr)}.toolbar,.cards{grid-template-columns:1fr 1fr}.tablewrap{overflow:auto}}@media(max-width:640px){.main,.side{padding:16px}.hero{padding:18px}.top{display:block}.actions{margin-top:14px}.cards,.toolbar,.formgrid,.nav{grid-template-columns:1fr}.title h2{font-size:28px}}
-</style></head><body><div class="app"><aside class="side"><div class="brand"><div class="logo">WL</div><div><h1>TSMC WorkLog</h1><p>Modern Control Center</p></div></div><nav class="nav"><button id="navWork" class="active" onclick="showTab('work')">📋 WorkLog</button><button id="navStatus" onclick="showTab('config','Status')">🏷️ Status</button><button id="navEndPoint" onclick="showTab('config','EndPoint')">🔀 EndPoint</button><button id="navResponsibilty" onclick="showTab('config','Responsibilty')">👤 Responsibilty</button><button id="navTicketType" onclick="showTab('config','TicketType')">📨 Ticket Type</button></nav></aside><main class="main"><section id="workTab"><div class="hero"><div class="top"><div class="title"><div class="eyebrow">● LIVE SHEET APP</div><h2>WorkLog Dashboard</h2><p>จัดการ Ticket แบบ interactive พร้อม master config, timestamp เวลาไทย และ duplicate guard</p></div><div class="actions"><button class="btn ghost" onclick="refresh()">↻ Refresh</button><button class="btn primary" onclick="openNew()">＋ ADD</button></div></div><div class="cards"><div class="card" style="--accent:#2563eb;--tone:#dbeafe"><div id="mTotal" class="metric">0</div><div class="label">Total records</div><div class="mini"><div class="bar"></div></div></div><div class="card" style="--accent:#f59e0b;--tone:#fef3c7"><div id="mInprocess" class="metric">0</div><div class="label">Inprocess</div><div class="mini"><div class="bar"></div></div></div><div class="card" style="--accent:#fb923c;--tone:#ffedd5"><div id="mRelocate" class="metric">0</div><div class="label">Relocate</div><div class="mini"><div class="bar"></div></div></div><div class="card" style="--accent:#10b981;--tone:#dcfce7"><div id="mDone" class="metric">0</div><div class="label">Done</div><div class="mini"><div class="bar"></div></div></div></div></div><div class="toolbar"><div class="control"><span>⌕</span><input id="q" class="input" oninput="applyFilters()" placeholder="ค้นหา Ticket / Description / Cause / Solution"></div><select id="fStatus" onchange="applyFilters()"></select><select id="fResp" onchange="applyFilters()"></select><input id="fDate" class="input" type="date" onchange="applyFilters()"><button class="btn" onclick="clearFilters()">Clear</button></div><div class="tablewrap"><table><thead><tr><th>No.</th><th>Timestamp</th><th>Date</th><th>Ticket</th><th>Description</th><th>Status</th><th>Endpoint</th><th>Responsibilty</th><th>Action</th></tr></thead><tbody id="tbody"></tbody></table><div class="pager"><button class="btn" onclick="prevPage()">← Prev</button><span id="pageInfo"></span><button class="btn" onclick="nextPage()">Next →</button></div></div></section><section id="configTab" style="display:none"><div class="hero"><div class="top"><div class="title"><div class="eyebrow">⚙ MASTER DATA</div><h2 id="cfgTitle">Config</h2><p id="cfgSub">เพิ่ม ลบ แก้ไข และค้นหา config ทั้งหมดจาก Google Sheet</p></div><button class="btn primary" onclick="openConfigNew()">＋ ADD</button></div></div><div class="cfgNote" id="cfgNote"></div><div class="toolbar" style="grid-template-columns:1fr auto"><div class="control"><span>⌕</span><input id="cfgQ" class="input" oninput="renderConfig()" placeholder="ค้นหา config"></div><button class="btn" onclick="cfgQ.value='';renderConfig()">Clear</button></div><div class="tablewrap"><table><thead id="cfgHead"></thead><tbody id="cfgBody"></tbody></table></div></section></main></div><div id="drawer" class="drawer"><div class="shade" onclick="closeDrawer()"></div><div class="panel"><div class="top"><div class="title"><div class="eyebrow">✦ EDITOR</div><h2 id="formTitle">ADD</h2><p>Timestamp บันทึกอัตโนมัติเป็นเวลาไทย UTC+7</p></div><button class="btn" onclick="closeDrawer()">✕</button></div><form id="form" class="formgrid" onsubmit="saveRecord(event)"></form></div></div><div id="toast" class="toast"></div><script>
-const API_URL='https://script.google.com/macros/s/AKfycbwAMDvzBi-azwulnM-JzaD-QK7Oiq_PXX1jMN4H1X3_9uZvcJ5tXNGE8IkaU3dK9co6lA/exec';let rows=[],meta={},filtered=[],current=null,page=1,pageSize=12,cfgSheet='Status';const workCols=['Timestamp','Date','Ticket','Description','Cause','Solution','Status','EndPoint','Responsibilty','Remark'];function apiCall(action,payload={}){return new Promise((res,rej)=>{let cb='cb'+Date.now()+Math.random().toString(36).slice(2),s=document.createElement('script'),t=setTimeout(()=>{clean();rej(Error('API timeout'))},20000);function clean(){clearTimeout(t);delete window[cb];s.remove()}window[cb]=j=>{clean();j&&j.ok?res(j.data):rej(Error(j?.error||'API error'))};s.onerror=()=>{clean();rej(Error('โหลด API ไม่สำเร็จ'))};s.src=API_URL+'?callback='+cb+'&payload='+encodeURIComponent(JSON.stringify({action,...payload}));document.body.appendChild(s)})}const tv=x=>String(x??''),vals=n=>(meta[n]||[]).map(x=>typeof x==='object'?x.Value:x),esc=v=>tv(v).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));function toastMsg(x){toast.textContent=x;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2800)}function today(){return new Date().toISOString().slice(0,10)}async function refresh(){try{let d=await apiCall('bootstrap');rows=d.rows||[];meta=d.meta||{};buildFilters();applyFilters();renderConfig();toastMsg('Sync completed')}catch(e){toastMsg(e.message)}}function buildFilters(){fStatus.innerHTML='<option value="">All status</option>'+vals('Status').map(x=>`<option>${esc(x)}</option>`).join('');fResp.innerHTML='<option value="">All responsibilty</option>'+vals('Responsibilty').map(x=>`<option>${esc(x)}</option>`).join('')}function applyFilters(){let qq=tv(q.value).toLowerCase(),st=fStatus.value,rp=fResp.value,dt=fDate.value;filtered=rows.filter(r=>(!qq||workCols.some(c=>tv(r[c]).toLowerCase().includes(qq)))&&(!st||r.Status===st)&&(!rp||r.Responsibilty===rp)&&(!dt||tv(r.Date).slice(0,10)===dt));page=1;renderWork()}function clearFilters(){q.value=fStatus.value=fResp.value=fDate.value='';applyFilters()}function pct(n){return rows.length?Math.max(8,Math.round(n/rows.length*100)):8}function renderWork(){let ip=rows.filter(r=>r.Status==='Inprocess').length,rl=rows.filter(r=>r.Status==='Relocate').length,dn=rows.filter(r=>r.Status==='Done').length;mTotal.textContent=rows.length;mInprocess.textContent=ip;mRelocate.textContent=rl;mDone.textContent=dn;document.querySelectorAll('.bar')[0].style.width='100%';document.querySelectorAll('.bar')[1].style.width=pct(ip)+'%';document.querySelectorAll('.bar')[2].style.width=pct(rl)+'%';document.querySelectorAll('.bar')[3].style.width=pct(dn)+'%';let start=(page-1)*pageSize,rs=filtered.slice(start,start+pageSize);tbody.innerHTML=rs.map((r,i)=>`<tr><td>${start+i+1}</td><td>${esc(r.Timestamp)}</td><td>${esc(r.Date)}</td><td class=ticket>${esc(r.Ticket)}</td><td class=desc title="${esc(r.Description)}">${esc(r.Description)}</td><td><span class="pill ${esc(r.Status)}">${esc(r.Status)}</span></td><td>${esc(r.EndPoint)}</td><td>${esc(r.Responsibilty)}</td><td><button class=rowbtn onclick='openEdit(${JSON.stringify(r).replaceAll("'","&#39;")})'>Edit</button><button class=rowbtn onclick='removeRecord(${r._row})'>Delete</button></td></tr>`).join('')||`<tr><td colspan=9 style="text-align:center;color:#64748b;padding:34px">ยังไม่มีข้อมูลที่ตรงกับเงื่อนไข</td></tr>`;pageInfo.textContent=`Page ${page} / ${Math.max(1,Math.ceil(filtered.length/pageSize))} • ${filtered.length} rows`}function nextPage(){if(page<Math.ceil(filtered.length/pageSize)){page++;renderWork()}}function prevPage(){if(page>1){page--;renderWork()}}const activeResp=()=>meta.Responsibilty||[],ondutyResp=()=>activeResp().filter(x=>x.OnDuty!==false).map(x=>x.Value);function nextResp(){let l=ondutyResp(),last=[...rows].reverse().find(r=>l.includes(r.Responsibilty))?.Responsibilty,idx=l.indexOf(last);return l.length?l[(idx+1)%l.length]:''}function buildForm(r={}){current=r._row?r:null;let resp=r.Responsibilty||(!current?nextResp():'');formTitle.textContent=current?'Edit WorkLog':'Add WorkLog';form.innerHTML=`<div class=field><label>Date</label><input class=input name=Date type=date value="${esc(r.Date||today())}"></div><div class=field><label>Status</label><select name=Status id=inStatus onchange=toggleEndPoint()>${vals('Status').map(x=>`<option ${x===(r.Status||'Inprocess')?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class="field full"><label>Source Type</label><div class=radio>${vals('TicketType').map(x=>`<label><input type=radio name=TicketType value="${esc(x)}" ${(r.TicketType||'Ticket')===x?'checked':''} onchange=toggleTicket()>${esc(x)}</label>`).join('')}</div></div><div class=field><label>Ticket <span style=color:#64748b;font-weight:600>(ห้ามซ้ำ)</span></label><input class=input id=inTicket name=Ticket value="${esc(r.Ticket||'')}"></div><div class=field id=epField><label>EndPoint</label><select name=EndPoint><option></option>${vals('EndPoint').map(x=>`<option ${x===r.EndPoint?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class=field><label>Responsibilty</label><select name=Responsibilty>${vals('Responsibilty').map(x=>`<option ${x===resp?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class="field full"><label>Description</label><textarea name=Description rows=4>${esc(r.Description)}</textarea></div><div class="field full"><label>Cause</label><textarea name=Cause rows=4>${esc(r.Cause)}</textarea></div><div class="field full"><label>Solution</label><textarea name=Solution rows=4>${esc(r.Solution)}</textarea></div><div class="field full"><label>Remark</label><textarea name=Remark rows=3>${esc(r.Remark)}</textarea></div><div class="field full actions"><button class="btn primary">Save WorkLog</button><button class=btn type=button onclick=closeDrawer()>Cancel</button></div>`;toggleTicket();toggleEndPoint()}function toggleTicket(){let t=document.querySelector('[name=TicketType]:checked')?.value||'Ticket';if(t==='Ticket'){inTicket.disabled=false;if(vals('TicketType').includes(inTicket.value)&&inTicket.value!=='Ticket')inTicket.value=''}else{inTicket.value=t;inTicket.disabled=true}}function toggleEndPoint(){epField.style.display=inStatus.value==='Relocate'?'block':'none';if(inStatus.value!=='Relocate')document.querySelector('[name=EndPoint]').value=''}function openNew(){buildForm({Date:today(),Status:'Inprocess'});drawer.classList.add('open')}function openEdit(r){buildForm(r);drawer.classList.add('open')}function closeDrawer(){drawer.classList.remove('open')}async function saveRecord(e){e.preventDefault();let rec=Object.fromEntries(new FormData(form).entries()),tt=document.querySelector('[name=TicketType]:checked')?.value||'Ticket';rec.TicketType=tt;if(tt!=='Ticket')rec.Ticket=tt;try{current?await apiCall('updateWorkLog',{row:current._row,record:rec}):await apiCall('createWorkLog',{record:rec});closeDrawer();await refresh();toastMsg('บันทึกเรียบร้อย')}catch(e){toastMsg(e.message)}}async function removeRecord(row){if(confirm('ลบรายการนี้?')){await apiCall('deleteWorkLog',{row});await refresh()}}function showTab(tab,sheet){document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));workTab.style.display=tab==='work'?'block':'none';configTab.style.display=tab==='config'?'block':'none';if(tab==='work')navWork.classList.add('active');else{cfgSheet=sheet;document.getElementById('nav'+sheet).classList.add('active');cfgTitle.textContent='Manage '+sheet;cfgNote.textContent=sheet==='Responsibilty'?'isActive=false จะซ่อนจาก select/filter/rows ทั้งหมด • OnDuty=false ยังเลือกได้ แต่ไม่ถูกใช้เป็น auto default':'Config นี้ใช้ควบคุม dropdown และ radio ในหน้า WorkLog';renderConfig()}}function renderConfig(){let qq=cfgQ.value.toLowerCase(),arr=(meta[cfgSheet]||[]).filter(x=>tv(typeof x==='object'?x.Value:x).toLowerCase().includes(qq));cfgHead.innerHTML=cfgSheet==='Responsibilty'?'<tr><th>No.</th><th>Name</th><th>isActive</th><th>OnDuty</th><th>Action</th></tr>':'<tr><th>No.</th><th>Value</th><th>Action</th></tr>';cfgBody.innerHTML=arr.map((x,i)=>{let o=typeof x==='object'?x:{Value:x,_row:i+2};return cfgSheet==='Responsibilty'?`<tr><td>${i+1}</td><td><b>${esc(o.Value)}</b></td><td><input type=checkbox ${o.isActive?'checked':''} onchange="quickResp(${o._row},'${esc(o.Value)}',this.checked,${o.OnDuty})"></td><td><input type=checkbox ${o.OnDuty?'checked':''} onchange="quickResp(${o._row},'${esc(o.Value)}',${o.isActive},this.checked)"></td><td><button class=rowbtn onclick='editConfig(${JSON.stringify(o)})'>Edit</button><button class=rowbtn onclick='deleteConfig(${o._row})'>Delete</button></td></tr>`:`<tr><td>${i+1}</td><td><b>${esc(o.Value)}</b></td><td><button class=rowbtn onclick='editConfig(${JSON.stringify(o)})'>Edit</button><button class=rowbtn onclick='deleteConfig(${o._row})'>Delete</button></td></tr>`}).join('')||`<tr><td colspan=5 style="text-align:center;color:#64748b;padding:28px">No config found</td></tr>`}async function quickResp(row,Value,isActive,OnDuty){await apiCall('updateConfig',{sheet:'Responsibilty',row,record:{Value,isActive,OnDuty}});await refresh()}async function openConfigNew(){let Value=prompt('เพิ่ม '+cfgSheet);if(!Value)return;await apiCall('createConfig',{sheet:cfgSheet,record:cfgSheet==='Responsibilty'?{Value,isActive:true,OnDuty:true}:{Value}});await refresh()}async function editConfig(o){let Value=prompt('แก้ไข',o.Value);if(!Value)return;await apiCall('updateConfig',{sheet:cfgSheet,row:o._row,record:cfgSheet==='Responsibilty'?{...o,Value}:{Value}});await refresh()}async function deleteConfig(row){if(confirm('ลบ?')){await apiCall('deleteConfig',{sheet:cfgSheet,row});await refresh()}}refresh();</script></body></html>
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WorkLog Console — Support Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS — dark support-ops console. Cyan is the "live signal"
+   accent; every other color is tied to a ticket Status and is
+   assigned dynamically in JS (see statusColor), not decorative.
+   ============================================================ */
+:root{
+  --bg:#0a0e17;
+  --panel:#0f1420;
+  --surface:#141a29;
+  --surface-2:#182034;
+  --line:#232c42;
+  --line-soft:#1a2236;
+  --ink:#e9edf6;
+  --muted:#8592ac;
+  --muted-dim:#5c6786;
+  --cyan:#33d6c8;
+  --cyan-dim:#1a3d3c;
+  --amber:#f5a623;
+  --coral:#ff6b5b;
+  --radius:14px;
+  --radius-lg:20px;
+  --font-ui:'Noto Sans Thai','IBM Plex Sans',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+  --shadow:0 24px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{
+  margin:0;color:var(--ink);font:15px/1.55 var(--font-ui);
+  background:
+    radial-gradient(1200px 600px at 90% -10%,#0f2a2a 0,transparent 55%),
+    radial-gradient(900px 500px at -10% 10%,#141d33 0,transparent 45%),
+    var(--bg);
+  min-height:100vh;
+}
+::selection{background:var(--cyan);color:#04201d}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+
+/* ---------- layout shell ---------- */
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+.side{
+  position:sticky;top:0;height:100vh;padding:22px 16px;
+  background:var(--panel);border-right:1px solid var(--line-soft);
+  display:flex;flex-direction:column;gap:22px;
+}
+.brand{display:flex;gap:12px;align-items:center;padding:0 6px}
+.brand .mark{
+  width:42px;height:42px;border-radius:12px;flex:none;
+  background:linear-gradient(135deg,var(--cyan),#1fa89c);
+  display:grid;place-items:center;color:#04201d;font-family:var(--font-mono);
+  font-weight:700;font-size:13px;letter-spacing:-.02em;
+}
+.brand h1{margin:0;font-size:16px;font-weight:700;letter-spacing:-.01em}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}
+
+.clock{
+  margin:0 6px;padding:12px 14px;border:1px solid var(--line-soft);
+  border-radius:var(--radius);background:var(--surface);
+}
+.clock .tz{color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.03em}
+.clock .time{
+  font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--cyan);
+  margin-top:3px;font-variant-numeric:tabular-nums;
+}
+
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav .navlabel{color:var(--muted-dim);font-size:11px;font-weight:700;padding:0 10px;margin:6px 0 4px}
+.nav button{
+  height:42px;border:0;border-radius:10px;background:transparent;color:var(--muted);
+  display:flex;align-items:center;gap:10px;padding:0 12px;font-weight:600;
+  text-align:left;transition:background .12s,color .12s;font-size:14px;
+}
+.nav button:hover{background:var(--surface);color:var(--ink)}
+.nav button.active{background:var(--cyan-dim);color:var(--cyan)}
+.nav button .ic{width:18px;text-align:center;flex:none}
+
+.sidefoot{margin-top:auto;padding:0 6px;color:var(--muted-dim);font-size:12px}
+.sidefoot .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);display:inline-block;margin-right:6px;box-shadow:0 0 0 3px var(--cyan-dim)}
+
+.main{padding:26px 30px 60px;max-width:1480px;width:100%;margin:0 auto}
+
+/* ---------- topbar ---------- */
+.topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.topbar h2{margin:0 0 4px;font-size:26px;font-weight:700;letter-spacing:-.01em}
+.topbar p{margin:0;color:var(--muted);font-size:13.5px}
+.topbar .actions{display:flex;gap:10px}
+.btn{
+  height:40px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:10px;padding:0 16px;font-weight:600;font-size:14px;
+  display:inline-flex;align-items:center;gap:8px;transition:.12s border-color,.12s transform;
+}
+.btn:hover{border-color:var(--muted-dim);transform:translateY(-1px)}
+.btn.primary{background:var(--cyan);color:#04201d;border-color:var(--cyan)}
+.btn.primary:hover{background:#4fe0d2}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--coral)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* ---------- stat strip (data-driven: one card per Status + Total) ---------- */
+.statstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.stat{
+  position:relative;padding:16px 16px 14px;border:1px solid var(--line-soft);
+  border-radius:var(--radius);background:var(--surface);overflow:hidden;
+}
+.stat .num{font-family:var(--font-mono);font-size:28px;font-weight:600;letter-spacing:-.02em}
+.stat .lbl{color:var(--muted);font-size:12.5px;font-weight:600;margin-top:2px}
+.stat .tick{position:absolute;left:0;top:0;bottom:0;width:3px}
+
+/* ---------- overview row: distribution meter + workload ---------- */
+.overview-row{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;margin-bottom:22px}
+.panel{border:1px solid var(--line-soft);border-radius:var(--radius-lg);background:var(--surface);padding:18px 20px}
+.panel h3{margin:0 0 3px;font-size:14px;font-weight:700}
+.panel .sub{margin:0 0 14px;color:var(--muted);font-size:12.5px}
+
+.meter{display:flex;height:14px;border-radius:99px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line-soft)}
+.meter span{height:100%;transition:width .4s ease}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:14px}
+.legend .li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+.legend .sw{width:8px;height:8px;border-radius:2px;flex:none}
+.legend b{color:var(--ink);font-family:var(--font-mono);font-weight:600}
+
+.wl-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.wl-row:last-child{margin-bottom:0}
+.wl-name{width:64px;flex:none;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wl-bar{flex:1;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.wl-bar i{display:block;height:100%;background:var(--cyan);border-radius:99px;transition:width .4s ease}
+.wl-count{width:26px;flex:none;text-align:right;font-family:var(--font-mono);font-size:12.5px;color:var(--muted)}
+.empty-mini{color:var(--muted-dim);font-size:13px;padding:8px 0}
+
+/* ---------- toolbar ---------- */
+.toolbar{display:grid;grid-template-columns:minmax(220px,1.6fr) repeat(3,1fr) auto;gap:10px;margin-bottom:14px}
+.control{position:relative}
+.control span{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted-dim);font-size:14px}
+.field-input,select,textarea{
+  width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:10px;padding:10px 13px;min-height:42px;outline:none;transition:border-color .12s;
+}
+.control .field-input{padding-left:36px}
+.field-input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+.field-input::placeholder{color:var(--muted-dim)}
+
+/* ---------- table ---------- */
+.tablewrap{border:1px solid var(--line-soft);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface)}
+table{width:100%;border-collapse:collapse}
+th,td{border-bottom:1px solid var(--line-soft);padding:12px 14px;text-align:left;vertical-align:top;font-size:13.5px}
+th{background:var(--surface-2);color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+.tk{font-family:var(--font-mono);font-weight:600;color:var(--cyan);font-size:13px}
+.tk-src{display:inline-block;margin-left:6px;font-size:10px;color:var(--muted-dim);font-weight:600}
+.desc{max-width:340px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:700}
+.chip .dot{width:6px;height:6px;border-radius:50%}
+.ep{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.who{display:flex;align-items:center;gap:8px}
+.avatar{width:24px;height:24px;border-radius:7px;background:var(--surface-2);display:grid;place-items:center;font-size:10.5px;font-weight:700;color:var(--cyan);flex:none;border:1px solid var(--line-soft)}
+.rowbtn{border:0;background:transparent;color:var(--muted);padding:6px;border-radius:8px;font-size:13px}
+.rowbtn:hover{background:var(--surface-2);color:var(--ink)}
+.rowbtn.rm:hover{color:var(--coral)}
+.empty-row td{text-align:center;color:var(--muted-dim);padding:40px 12px}
+
+.pager{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface-2)}
+.pager span{color:var(--muted);font-size:12.5px;font-family:var(--font-mono)}
+
+/* ---------- modal (ticket editor + config editor) ---------- */
+.overlay{position:fixed;inset:0;z-index:40;display:none}
+.overlay.open{display:block}
+.overlay .shade{position:absolute;inset:0;background:rgba(4,7,13,.7);backdrop-filter:blur(3px)}
+.modal{
+  position:relative;z-index:1;max-width:760px;width:calc(100% - 40px);margin:5vh auto;max-height:90vh;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);display:flex;flex-direction:column;animation:pop .16s ease;
+}
+.modal.small{max-width:440px}
+@keyframes pop{from{transform:translateY(8px);opacity:0}}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;padding:20px 22px 16px;border-bottom:1px solid var(--line-soft)}
+.modal-head .eyebrow{color:var(--cyan);font-size:11px;font-weight:700;letter-spacing:.04em;margin-bottom:6px}
+.modal-head h2{margin:0;font-size:19px;font-weight:700}
+.modal-head p{margin:4px 0 0;color:var(--muted);font-size:12.5px}
+.modal-head .x{border:0;background:var(--surface);width:32px;height:32px;border-radius:9px;color:var(--muted);flex:none}
+.modal-head .x:hover{color:var(--ink)}
+.modal-body{padding:20px 22px;overflow:auto}
+.modal-foot{display:flex;justify-content:flex-end;gap:10px;padding:16px 22px;border-top:1px solid var(--line-soft)}
+
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:6px}
+.pillgroup{display:flex;gap:8px;flex-wrap:wrap}
+.pillgroup label{
+  display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:8px 13px;font-size:13px;font-weight:600;color:var(--muted);
+}
+.pillgroup input{accent-color:var(--cyan)}
+.pillgroup input:checked + span{color:var(--ink)}
+textarea{resize:vertical;min-height:78px;line-height:1.5}
+.hint{font-size:11.5px;color:var(--muted-dim);font-weight:500}
+.switchrow{display:flex;gap:18px;margin-top:4px}
+.switchrow label{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink);font-weight:600}
+.switchrow input{width:16px;height:16px;accent-color:var(--cyan)}
+
+/* ---------- toast ---------- */
+.toast{
+  position:fixed;right:22px;bottom:22px;background:var(--surface);border:1px solid var(--line);
+  color:var(--ink);border-radius:12px;padding:12px 16px;display:none;z-index:60;box-shadow:var(--shadow);
+  font-size:13.5px;max-width:320px;
+}
+.toast.show{display:flex;align-items:center;gap:8px;animation:pop .16s ease}
+.toast .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);flex:none}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media(max-width:1050px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center}
+  .clock{display:none}
+  .nav{flex-direction:row;flex-wrap:wrap}
+  .navlabel{display:none}
+  .overview-row{grid-template-columns:1fr}
+  .toolbar{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .main{padding:18px}
+  .formgrid{grid-template-columns:1fr}
+  .toolbar{grid-template-columns:1fr}
+  .statstrip{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side">
+    <div class="brand">
+      <div class="mark">WL</div>
+      <div>
+        <h1>WorkLog Console</h1>
+        <p>Support Ops Tracker</p>
+      </div>
+    </div>
+
+    <div class="clock">
+      <div class="tz">เวลาไทย · Asia/Bangkok</div>
+      <div class="time" id="clockTime">--:--:--</div>
+    </div>
+
+    <nav class="nav">
+      <div class="navlabel">Operations</div>
+      <button id="navWork" class="active" onclick="showView('work')"><span class="ic">▤</span>Tickets</button>
+      <div class="navlabel">Master data</div>
+      <button id="navStatus" onclick="showView('config','Status')"><span class="ic">◆</span>Status</button>
+      <button id="navEndPoint" onclick="showView('config','EndPoint')"><span class="ic">◈</span>EndPoint</button>
+      <button id="navResponsibilty" onclick="showView('config','Responsibilty')"><span class="ic">●</span>Team</button>
+      <button id="navTicketType" onclick="showView('config','TicketType')"><span class="ic">✉</span>Source Type</button>
+    </nav>
+
+    <div class="sidefoot"><span class="dot"></span><span id="syncNote">Syncing…</span></div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- ---------- Tickets view ---------- -->
+    <section id="workView">
+      <div class="topbar">
+        <div>
+          <h2>Ticket dashboard</h2>
+          <p>ติดตามเคสทั้งหมด บันทึกเวลาไทยอัตโนมัติ และกันเลข Ticket ซ้ำ</p>
+        </div>
+        <div class="actions">
+          <button class="btn ghost" onclick="refresh()">↻ Refresh</button>
+          <button class="btn primary" onclick="openTicketModal()">＋ New ticket</button>
+        </div>
+      </div>
+
+      <div class="statstrip" id="statstrip"></div>
+
+      <div class="overview-row">
+        <div class="panel">
+          <h3>Status distribution</h3>
+          <p class="sub">สัดส่วนเคสตามสถานะปัจจุบัน</p>
+          <div class="meter" id="meter"></div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="panel">
+          <h3>Workload by engineer</h3>
+          <p class="sub">จำนวนเคสที่รับผิดชอบ ทุกสถานะ</p>
+          <div id="workload"></div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="control"><span>⌕</span><input id="q" class="field-input" oninput="applyFilters()" placeholder="ค้นหา Ticket / Description / Cause / Solution"></div>
+        <select id="fStatus" onchange="applyFilters()"></select>
+        <select id="fResp" onchange="applyFilters()"></select>
+        <select id="fType" onchange="applyFilters()"></select>
+        <button class="btn ghost" onclick="clearFilters()">Clear</button>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Ticket</th><th>Description</th><th>Status</th><th>EndPoint</th><th>Owner</th><th>Date</th><th></th></tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <div class="pager">
+          <button class="btn ghost" id="prevBtn" onclick="prevPage()">← Prev</button>
+          <span id="pageInfo"></span>
+          <button class="btn ghost" id="nextBtn" onclick="nextPage()">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Config view ---------- -->
+    <section id="configView" style="display:none">
+      <div class="topbar">
+        <div>
+          <h2 id="cfgTitle">Config</h2>
+          <p id="cfgSub">จัดการรายการที่ใช้ในฟอร์ม WorkLog</p>
+        </div>
+        <div class="actions">
+          <button class="btn primary" onclick="openConfigModal()">＋ Add</button>
+        </div>
+      </div>
+      <div class="toolbar" style="grid-template-columns:1fr auto">
+        <div class="control"><span>⌕</span><input id="cfgQ" class="field-input" oninput="renderConfig()" placeholder="ค้นหา"></div>
+        <button class="btn ghost" onclick="cfgQ.value='';renderConfig()">Clear</button>
+      </div>
+      <div class="tablewrap">
+        <table><thead id="cfgHead"></thead><tbody id="cfgBody"></tbody></table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ TICKET MODAL ============ -->
+<div id="ticketOverlay" class="overlay">
+  <div class="shade" onclick="closeTicketModal()"></div>
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="eyebrow">TICKET EDITOR</div>
+        <h2 id="formTitle">New ticket</h2>
+        <p>Timestamp บันทึกอัตโนมัติเป็นเวลาไทย (UTC+7)</p>
+      </div>
+      <button class="x" onclick="closeTicketModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="form" class="formgrid" onsubmit="saveRecord(event)"></form>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn ghost" onclick="closeTicketModal()">Cancel</button>
+      <button type="submit" form="form" class="btn primary">Save ticket</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONFIG MODAL ============ -->
+<div id="cfgOverlay" class="overlay">
+  <div class="shade" onclick="closeConfigModal()"></div>
+  <div class="modal small">
+    <div class="modal-head">
+      <div>
+        <div class="eyebrow" id="cfgModalEyebrow">MASTER DATA</div>
+        <h2 id="cfgModalTitle">Add</h2>
+      </div>
+      <button class="x" onclick="closeConfigModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="cfgForm" class="formgrid" onsubmit="saveConfig(event)"></form>
+    </div>
+    <div class="modal-foot">
+      <button type="button" class="btn ghost" onclick="closeConfigModal()">Cancel</button>
+      <button type="submit" form="cfgForm" class="btn primary">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"><span class="dot"></span><span id="toastText"></span></div>
+
+<script>
+/* ============================================================
+   API — unchanged JSONP bridge to the Apps Script web app.
+   Replace API_URL with your own /exec deployment link.
+   ============================================================ */
+const API_URL = 'https://script.google.com/macros/s/AKfycbwAMDvzBi-azwulnM-JzaD-QK7Oiq_PXX1jMN4H1X3_9uZvcJ5tXNGE8IkaU3dK9co6lA/exec';
+
+function apiCall(action, payload = {}) {
+  return new Promise((resolve, reject) => {
+    const cb = 'cb' + Date.now() + Math.random().toString(36).slice(2);
+    const s = document.createElement('script');
+    const timer = setTimeout(() => { clean(); reject(Error('API timeout')); }, 20000);
+    function clean() { clearTimeout(timer); delete window[cb]; s.remove(); }
+    window[cb] = json => {
+      clean();
+      json && json.ok ? resolve(json.data) : reject(Error(json?.error || 'API error'));
+    };
+    s.onerror = () => { clean(); reject(Error('โหลด API ไม่สำเร็จ')); };
+    s.src = API_URL + '?callback=' + cb + '&payload=' + encodeURIComponent(JSON.stringify({ action, ...payload }));
+    document.body.appendChild(s);
+  });
+}
+
+/* ============================================================
+   STATE + small helpers
+   ============================================================ */
+let rows = [], meta = {}, filtered = [], current = null, page = 1;
+const pageSize = 10;
+let cfgSheet = 'Status', cfgCurrent = null;
+const workCols = ['Timestamp','Date','Ticket','Description','Cause','Solution','Status','EndPoint','Responsibilty','Remark'];
+
+const tv = x => String(x ?? '');
+const vals = n => (meta[n] || []).map(x => typeof x === 'object' ? x.Value : x);
+// Responsibilty now arrives with inactive members included (so the admin
+// screen can re-enable them) — dropdowns that assign new work should only
+// offer people who are currently active.
+const activeVals = n => (meta[n] || []).filter(x => typeof x !== 'object' || x.isActive !== false).map(x => typeof x === 'object' ? x.Value : x);
+const esc = v => tv(v).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const initials = n => tv(n).trim().slice(0, 2).toUpperCase() || '—';
+function today() { return new Date().toISOString().slice(0, 10); }
+
+/* Palette assigned per Status value. Known statuses get a fixed
+   hue; anything added later in the config screen still gets a
+   stable, legible color via a hash fallback — no hardcoded CSS
+   class per status name required. */
+const STATUS_PALETTE = {
+  Inprocess: '#f5a623',
+  Report:    '#35b8e8',
+  Relocate:  '#9b87f5',
+  Done:      '#34d399',
+  Reject:    '#ff6b5b',
+};
+function statusColor(s) {
+  if (STATUS_PALETTE[s]) return STATUS_PALETTE[s];
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return `hsl(${h % 360} 70% 62%)`;
+}
+
+function toastMsg(x) {
+  toastText.textContent = x;
+  toast.classList.add('show');
+  clearTimeout(toastMsg._t);
+  toastMsg._t = setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+/* live Thailand clock — the one continuously-moving element on
+   the page, deliberately quiet (monospace, no animation) */
+function tickClock() {
+  clockTime.textContent = new Intl.DateTimeFormat('th-TH', {
+    timeZone: 'Asia/Bangkok', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+  }).format(new Date());
+}
+setInterval(tickClock, 1000);
+tickClock();
+
+/* ============================================================
+   BOOTSTRAP + FILTERS
+   ============================================================ */
+async function refresh() {
+  try {
+    syncNote.textContent = 'Syncing…';
+    const d = await apiCall('bootstrap');
+    rows = d.rows || [];
+    meta = d.meta || {};
+    buildFilters();
+    applyFilters();
+    renderDashboard();
+    renderConfig();
+    syncNote.textContent = 'Synced ' + new Intl.DateTimeFormat('th-TH', { timeZone: 'Asia/Bangkok', hour: '2-digit', minute: '2-digit' }).format(new Date());
+    toastMsg('Sync completed');
+  } catch (e) {
+    syncNote.textContent = 'Sync failed';
+    toastMsg(e.message);
+  }
+}
+
+function buildFilters() {
+  fStatus.innerHTML = '<option value="">ทุกสถานะ</option>' + vals('Status').map(x => `<option>${esc(x)}</option>`).join('');
+  fResp.innerHTML = '<option value="">ทุกคน</option>' + activeVals('Responsibilty').map(x => `<option>${esc(x)}</option>`).join('');
+  fType.innerHTML = '<option value="">ทุกช่องทาง</option>' + vals('TicketType').map(x => `<option>${esc(x)}</option>`).join('');
+}
+
+function applyFilters() {
+  const qq = tv(q.value).toLowerCase(), st = fStatus.value, rp = fResp.value, tp = fType.value;
+  filtered = rows
+    .filter(r => (!qq || workCols.some(c => tv(r[c]).toLowerCase().includes(qq)))
+      && (!st || r.Status === st)
+      && (!rp || r.Responsibilty === rp)
+      && (!tp || (r.TicketType || 'Ticket') === tp))
+    .sort((a, b) => tv(b.Timestamp).localeCompare(tv(a.Timestamp))); // newest first
+  page = 1;
+  renderTable();
+}
+
+function clearFilters() { q.value = fStatus.value = fResp.value = fType.value = ''; applyFilters(); }
+
+/* ============================================================
+   DASHBOARD — stat strip, status meter, workload
+   ============================================================ */
+function renderDashboard() {
+  const statuses = vals('Status');
+  const total = rows.length;
+
+  statstrip.innerHTML = `<div class="stat"><div class="tick" style="background:var(--cyan)"></div><div class="num">${total}</div><div class="lbl">Total tickets</div></div>` +
+    statuses.map(s => {
+      const n = rows.filter(r => r.Status === s).length;
+      return `<div class="stat"><div class="tick" style="background:${statusColor(s)}"></div><div class="num">${n}</div><div class="lbl">${esc(s)}</div></div>`;
+    }).join('');
+
+  if (!total) {
+    meter.innerHTML = '';
+    legend.innerHTML = '<span class="empty-mini">ยังไม่มีข้อมูล</span>';
+  } else {
+    meter.innerHTML = statuses.map(s => {
+      const n = rows.filter(r => r.Status === s).length;
+      return n ? `<span style="width:${n / total * 100}%;background:${statusColor(s)}"></span>` : '';
+    }).join('');
+    legend.innerHTML = statuses.map(s => {
+      const n = rows.filter(r => r.Status === s).length;
+      return `<span class="li"><span class="sw" style="background:${statusColor(s)}"></span>${esc(s)} <b>${n}</b></span>`;
+    }).join('');
+  }
+
+  const people = activeVals('Responsibilty');
+  const counts = people.map(p => ({ p, n: rows.filter(r => r.Responsibilty === p).length })).sort((a, b) => b.n - a.n);
+  const max = Math.max(1, ...counts.map(c => c.n));
+  workload.innerHTML = counts.length
+    ? counts.map(c => `<div class="wl-row"><span class="wl-name">${esc(c.p)}</span><span class="wl-bar"><i style="width:${c.n / max * 100}%"></i></span><span class="wl-count">${c.n}</span></div>`).join('')
+    : '<div class="empty-mini">ยังไม่มีข้อมูล</div>';
+}
+
+/* ============================================================
+   TICKET TABLE
+   ============================================================ */
+function renderTable() {
+  const start = (page - 1) * pageSize, rs = filtered.slice(start, start + pageSize);
+  tbody.innerHTML = rs.map(r => {
+    const src = r.TicketType && r.TicketType !== 'Ticket' ? `<span class="tk-src">via ${esc(r.TicketType)}</span>` : '';
+    return `<tr>
+      <td><span class="tk">${esc(r.Ticket)}</span>${src}</td>
+      <td class="desc" title="${esc(r.Description)}">${esc(r.Description)}</td>
+      <td><span class="chip" style="background:${statusColor(r.Status)}22;color:${statusColor(r.Status)}"><span class="dot" style="background:${statusColor(r.Status)}"></span>${esc(r.Status)}</span></td>
+      <td class="ep">${esc(r.EndPoint) || '—'}</td>
+      <td><div class="who"><span class="avatar">${initials(r.Responsibilty)}</span>${esc(r.Responsibilty)}</div></td>
+      <td class="ep">${esc(r.Date)}</td>
+      <td><button class="rowbtn" title="Edit" onclick='openTicketModal(${JSON.stringify(r).replaceAll("'", "&#39;")})'>✎</button><button class="rowbtn rm" title="Delete" onclick="removeRecord(${r._row})">✕</button></td>
+    </tr>`;
+  }).join('') || `<tr class="empty-row"><td colspan="7">ยังไม่มีข้อมูลที่ตรงกับเงื่อนไข</td></tr>`;
+  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  pageInfo.textContent = `หน้า ${page} / ${pages} • ${filtered.length} รายการ`;
+  prevBtn.disabled = page <= 1;
+  nextBtn.disabled = page >= pages;
+}
+function nextPage() { if (page < Math.ceil(filtered.length / pageSize)) { page++; renderTable(); } }
+function prevPage() { if (page > 1) { page--; renderTable(); } }
+
+/* auto-suggest the next on-duty engineer, round-robin off the
+   most recent assignment — kept from the original app */
+const ondutyResp = () => (meta.Responsibilty || []).filter(x => x.isActive !== false && x.OnDuty !== false).map(x => x.Value);
+function nextResp() {
+  const l = ondutyResp();
+  const last = [...rows].reverse().find(r => l.includes(r.Responsibilty))?.Responsibilty;
+  const idx = l.indexOf(last);
+  return l.length ? l[(idx + 1) % l.length] : '';
+}
+
+/* ============================================================
+   TICKET MODAL (add / edit)
+   ============================================================ */
+function buildForm(r = {}) {
+  current = r._row ? r : null;
+  const resp = r.Responsibilty || (!current ? nextResp() : '');
+  formTitle.textContent = current ? 'Edit ticket' : 'New ticket';
+  form.innerHTML = `
+    <div class="field full">
+      <label>Source</label>
+      <div class="pillgroup">${vals('TicketType').map(x => `<label><input type="radio" name="TicketType" value="${esc(x)}" ${(r.TicketType || 'Ticket') === x ? 'checked' : ''} onchange="toggleTicket()"><span>${esc(x)}</span></label>`).join('')}</div>
+    </div>
+    <div class="field">
+      <label>Ticket ID <span class="hint">(ห้ามซ้ำ เมื่อ Source = Ticket)</span></label>
+      <input class="field-input" id="inTicket" name="Ticket" value="${esc(r.Ticket || '')}">
+    </div>
+    <div class="field">
+      <label>Date</label>
+      <input class="field-input" name="Date" type="date" value="${esc(r.Date || today())}">
+    </div>
+    <div class="field">
+      <label>Status</label>
+      <select name="Status" id="inStatus" onchange="toggleEndPoint()">${vals('Status').map(x => `<option ${x === (r.Status || vals('Status')[0]) ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>
+    </div>
+    <div class="field" id="epField">
+      <label>EndPoint</label>
+      <select name="EndPoint"><option></option>${vals('EndPoint').map(x => `<option ${x === r.EndPoint ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>
+    </div>
+    <div class="field full">
+      <label>Owner</label>
+      <select name="Responsibilty">${activeVals('Responsibilty').map(x => `<option ${x === resp ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>
+    </div>
+    <div class="field full"><label>Description</label><textarea name="Description" rows="4">${esc(r.Description)}</textarea></div>
+    <div class="field full"><label>Cause</label><textarea name="Cause" rows="3">${esc(r.Cause)}</textarea></div>
+    <div class="field full"><label>Solution</label><textarea name="Solution" rows="3">${esc(r.Solution)}</textarea></div>
+    <div class="field full"><label>Remark</label><textarea name="Remark" rows="2">${esc(r.Remark)}</textarea></div>
+  `;
+  toggleTicket();
+  toggleEndPoint();
+}
+function toggleTicket() {
+  const t = document.querySelector('[name=TicketType]:checked')?.value || 'Ticket';
+  if (t === 'Ticket') {
+    inTicket.disabled = false;
+    if (vals('TicketType').includes(inTicket.value) && inTicket.value !== 'Ticket') inTicket.value = '';
+  } else {
+    inTicket.value = t;
+    inTicket.disabled = true;
+  }
+}
+function toggleEndPoint() {
+  const relocate = inStatus.value === 'Relocate';
+  epField.style.display = relocate ? 'block' : 'none';
+  if (!relocate) document.querySelector('[name=EndPoint]').value = '';
+}
+function openTicketModal(r) { buildForm(r || {}); ticketOverlay.classList.add('open'); setTimeout(() => inTicket?.focus(), 30); }
+function closeTicketModal() { ticketOverlay.classList.remove('open'); }
+
+async function saveRecord(e) {
+  e.preventDefault();
+  const rec = Object.fromEntries(new FormData(form).entries());
+  const tt = document.querySelector('[name=TicketType]:checked')?.value || 'Ticket';
+  rec.TicketType = tt;
+  if (tt !== 'Ticket') rec.Ticket = tt;
+  try {
+    current ? await apiCall('updateWorkLog', { row: current._row, record: rec }) : await apiCall('createWorkLog', { record: rec });
+    closeTicketModal();
+    await refresh();
+    toastMsg('บันทึกเรียบร้อย');
+  } catch (err) { toastMsg(err.message); }
+}
+async function removeRecord(row) {
+  if (!confirm('ลบรายการนี้?')) return;
+  try { await apiCall('deleteWorkLog', { row }); await refresh(); toastMsg('ลบเรียบร้อย'); }
+  catch (err) { toastMsg(err.message); }
+}
+
+/* ============================================================
+   CONFIG (Status / EndPoint / Responsibilty / TicketType)
+   ============================================================ */
+function showView(view, sheet) {
+  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+  workView.style.display = view === 'work' ? 'block' : 'none';
+  configView.style.display = view === 'config' ? 'block' : 'none';
+  if (view === 'work') { navWork.classList.add('active'); return; }
+  cfgSheet = sheet;
+  document.getElementById('nav' + sheet).classList.add('active');
+  cfgTitle.textContent = 'Manage ' + sheet;
+  cfgSub.textContent = sheet === 'Responsibilty'
+    ? 'ปิด Active เพื่อซ่อนจากทุก dropdown / filter • ปิด On duty เพื่อไม่ให้ถูกเลือกเป็นค่าอัตโนมัติ'
+    : 'ควบคุมตัวเลือกในฟอร์มเพิ่ม/แก้ไข Ticket';
+  renderConfig();
+}
+function renderConfig() {
+  const qq = (cfgQ?.value || '').toLowerCase();
+  const arr = (meta[cfgSheet] || []).filter(x => tv(typeof x === 'object' ? x.Value : x).toLowerCase().includes(qq));
+  cfgHead.innerHTML = cfgSheet === 'Responsibilty'
+    ? '<tr><th>Name</th><th>Active</th><th>On duty</th><th></th></tr>'
+    : '<tr><th>Value</th><th></th></tr>';
+  cfgBody.innerHTML = arr.map((x, i) => {
+    const o = typeof x === 'object' ? x : { Value: x, _row: i + 2 };
+    const actions = `<button class="rowbtn" title="Edit" onclick='editConfig(${JSON.stringify(o).replaceAll("'", "&#39;")})'>✎</button><button class="rowbtn rm" title="Delete" onclick="deleteConfig(${o._row})">✕</button>`;
+    if (cfgSheet !== 'Responsibilty') return `<tr><td><b>${esc(o.Value)}</b></td><td style="text-align:right">${actions}</td></tr>`;
+    return `<tr>
+      <td><b>${esc(o.Value)}</b></td>
+      <td><input type="checkbox" ${o.isActive ? 'checked' : ''} onchange="quickResp(${o._row},'${esc(o.Value)}',this.checked,${!!o.OnDuty})"></td>
+      <td><input type="checkbox" ${o.OnDuty ? 'checked' : ''} onchange="quickResp(${o._row},'${esc(o.Value)}',${!!o.isActive},this.checked)"></td>
+      <td style="text-align:right">${actions}</td>
+    </tr>`;
+  }).join('') || `<tr class="empty-row"><td colspan="4">No config found</td></tr>`;
+}
+async function quickResp(row, Value, isActive, OnDuty) {
+  try { await apiCall('updateConfig', { sheet: 'Responsibilty', row, record: { Value, isActive, OnDuty } }); await refresh(); }
+  catch (err) { toastMsg(err.message); }
+}
+
+function openConfigModal(o) {
+  cfgCurrent = o && o._row ? o : null;
+  cfgModalTitle.textContent = (cfgCurrent ? 'Edit ' : 'Add ') + cfgSheet;
+  cfgModalEyebrow.textContent = 'MASTER DATA · ' + cfgSheet.toUpperCase();
+  const isResp = cfgSheet === 'Responsibilty';
+  cfgForm.innerHTML = `
+    <div class="field full"><label>Value</label><input class="field-input" id="cfgValue" name="Value" value="${esc(cfgCurrent?.Value || '')}" required></div>
+    ${isResp ? `<div class="field full switchrow">
+      <label><input type="checkbox" name="isActive" ${cfgCurrent ? (cfgCurrent.isActive ? 'checked' : '') : 'checked'}> Active</label>
+      <label><input type="checkbox" name="OnDuty" ${cfgCurrent ? (cfgCurrent.OnDuty ? 'checked' : '') : 'checked'}> On duty</label>
+    </div>` : ''}
+  `;
+  cfgOverlay.classList.add('open');
+  setTimeout(() => cfgValue?.focus(), 30);
+}
+function closeConfigModal() { cfgOverlay.classList.remove('open'); }
+function editConfig(o) { openConfigModal(o); }
+async function saveConfig(e) {
+  e.preventDefault();
+  const fd = Object.fromEntries(new FormData(cfgForm).entries());
+  const record = cfgSheet === 'Responsibilty'
+    ? { Value: fd.Value, isActive: !!fd.isActive, OnDuty: !!fd.OnDuty }
+    : { Value: fd.Value };
+  try {
+    cfgCurrent
+      ? await apiCall('updateConfig', { sheet: cfgSheet, row: cfgCurrent._row, record })
+      : await apiCall('createConfig', { sheet: cfgSheet, record });
+    closeConfigModal();
+    await refresh();
+    toastMsg('บันทึกเรียบร้อย');
+  } catch (err) { toastMsg(err.message); }
+}
+async function deleteConfig(row) {
+  if (!confirm('ลบรายการนี้?')) return;
+  try { await apiCall('deleteConfig', { sheet: cfgSheet, row }); await refresh(); toastMsg('ลบเรียบร้อย'); }
+  catch (err) { toastMsg(err.message); }
+}
+
+/* ============================================================
+   GLOBAL UX — escape to close whichever modal is open
+   ============================================================ */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (ticketOverlay.classList.contains('open')) closeTicketModal();
+  else if (cfgOverlay.classList.contains('open')) closeConfigModal();
+});
+
+refresh();
+</script>
+</body>
+</html>

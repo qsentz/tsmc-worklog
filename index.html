@@ -24,7 +24,21 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbwAMDvzBi-azwulnM-JzaD-
 const COLS = ['#','Date','Week','Ticket','Description','Cause','Solution','Status','EndPoint','Responsibilty','Remark'];
 let rows=[], filtered=[], current=null, page=1, pageSize=12;
 const sample = [{"#":1,Date:'2026-03-13',Week:'Friday',Ticket:'JB26-0499400',Description:'Customer issue: Change Owner error and duplicated account.',Cause:'Promotion not allowed for Change Owner; duplicate create account.',Solution:'Interim workaround and long-term create account check.',Status:'Report',EndPoint:'',Responsibilty:'Fame',Remark:''},{"#":2,Date:'2026-03-13',Week:'Friday',Ticket:'JB26-0499526',Description:'Easy App device purchase completed but subscriber not converted.',Cause:'Read card chipNo empty caused missing Birthday field.',Solution:'Updated data and re-provisioning completed.',Status:'Report',EndPoint:'',Responsibilty:'Tar',Remark:''},{"#":3,Date:'2026-03-13',Week:'Friday',Ticket:'JB26-0499721',Description:'Dealer mapping displayed wrong location.',Cause:'Mapping file showed Dealer 82171 while MC sent another value.',Solution:'Pending related team check.',Status:'Relocate',EndPoint:'SKY',Responsibilty:'Kong',Remark:''}];
-function api(action, payload={}){ if(API_URL.includes('PASTE_')) return Promise.resolve(mock(action,payload)); return fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,...payload})}).then(r=>r.json()).then(j=>{if(!j.ok) throw new Error(j.error||'API error'); return j.data;}); }
+function api(action, payload={}){
+  if(API_URL.includes('PASTE_')) return Promise.resolve(mock(action,payload));
+  // GitHub Pages -> Google Apps Script has CORS limits. Use JSONP over GET.
+  return new Promise((resolve, reject)=>{
+    const cb = 'gas_cb_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+    const script = document.createElement('script');
+    const timer = setTimeout(()=>{ cleanup(); reject(new Error('API timeout / Deploy permission issue')); }, 20000);
+    function cleanup(){ clearTimeout(timer); delete window[cb]; script.remove(); }
+    window[cb] = (j)=>{ cleanup(); if(!j.ok) reject(new Error(j.error||'API error')); else resolve(j.data); };
+    const url = API_URL + '?callback=' + encodeURIComponent(cb) + '&payload=' + encodeURIComponent(JSON.stringify({action,...payload}));
+    script.onerror = ()=>{ cleanup(); reject(new Error('โหลด API ไม่สำเร็จ: ตรวจสอบ Web app deployment')); };
+    script.src = url;
+    document.body.appendChild(script);
+  });
+}
 function mock(action,p){ if(action==='list') return rows.length?rows:sample; if(action==='create'){p.record['#']=Math.max(0,...rows.map(r=>+r['#']||0))+1; rows.unshift(p.record); return p.record} if(action==='update'){rows=rows.map(r=>String(r['#'])===String(p.id)?{...r,...p.record}:r); return p.record} if(action==='delete'){rows=rows.filter(r=>String(r['#'])!==String(p.id)); return true} }
 function showLoading(v){document.getElementById('loading').classList.toggle('show',v)} function toast(t){const el=document.getElementById('toast'); el.textContent=t; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),2600)}
 async function refresh(){showLoading(true); try{rows=await api('list'); applyFilters(); toast('โหลดข้อมูลเรียบร้อย');}catch(e){toast(e.message)} finally{showLoading(false)}}
